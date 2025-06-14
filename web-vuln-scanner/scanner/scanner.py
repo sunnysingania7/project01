@@ -32,7 +32,12 @@ def run_scan(url):
     results = []
 
     # Get all forms on the page
-    form = get_all_forms(url)
+    forms = get_all_forms(url)
+    
+    for form in forms:
+        action = form.get("action")
+        method = form.get("method", "get").lower()
+        post_url = urljoin(url, action)
 
     # XSS scan
     for form in forms:
