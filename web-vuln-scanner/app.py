@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, send_file, session
-from scanner import scan_website
+from flask import Flask, render_template, request, send_file, session, redirect, url_for
+from scanner.scanner import run_scan
 from datetime import datetime
 from io import BytesIO
 from xhtml2pdf import pisa
@@ -8,18 +8,26 @@ import os
 app = Flask(__name__)
 app.secret_key = 'your-secret-key' # Needed for session handling
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
+    if request.method == 'POST':
+        url = request.form['url']
+        # Optional: return scan result here if you want
+        return redirect(url_for('scan', url=url))
     return render_template('index.html')
 
-@app.route('/scan', methods=['POST'])
+@app.route('/scan', methods=['GET', 'POST'])
 def scan():
-    url = request.form['url']
+    url = request.args.get('url') or request.form.get('url')
+    
+    if not url:
+        return "No URL provided", 400 # Prevents crashing if empty input
+    
     if not url.startswith('http'):
         url = 'http://' + url
     
     # Perform the scan
-    results = scan_website(url)
+    results = run_scan(url)
 
     # Store results in session for PDF download
     session['results'] = results
