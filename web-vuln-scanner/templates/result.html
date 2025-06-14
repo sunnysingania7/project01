@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Results</title>
+    <link rel="stylesheet" href="/static/result.css">
+</head>
+<body>
+    <h2>Scan Results for: {{ url }}</h2>
+
+    <div class="result-box">
+    {% if results %}
+        <ul>
+            {% for result in results %}
+                <li>{{ result }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No vulnerabilities found.</p>
+    {% endif %}
+    </div>
+
+    <div class="download-btn">
+        <a href="/download">Download PDF Report</a>
+    </div>
+</body>
+</html>
