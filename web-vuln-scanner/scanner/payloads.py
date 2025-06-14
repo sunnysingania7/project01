@@ -11,5 +11,3 @@ sqli_payloads = [
     "' OR '1'='1'",
     "'; DROP TABLE users; --",
 ]
-
-# You can add more later!
