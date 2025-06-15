@@ -36,6 +36,8 @@ Extras    : Session handling, PDF rendering
 ## Project Structure 
 ``` 
 web-vuln-scanner/ 
+    docs/ 
+        Internship Report - Web Vulnerability Scanner.pdf
     app.py                     # Flask app entry 
     scanner/                   # Core scanning engine 
         scanner.py             # XSS + SQLi detection logic 
@@ -94,6 +96,14 @@ If you're into web security or ethical hacking, feel free to fork the repo, sugg
 
 [https://github.com/sunnysingania7/project01]
 (https://github.com/sunnysingania7/project01)
+
+--- 
+
+## 📄 Project Report
+
+You can view the detailed project report here:  
+[Download Internship Report (PDF)]
+(./docs/Internship_Report_Web_Vulnerability_Scanner.pdf)
 
 --- 
 
